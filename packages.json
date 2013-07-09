@@ -2,7 +2,7 @@
 	"schema_version": "1.2",
 	"packages": [
 		{
-			"name": "FixMacPath",
+			"name": "Fix Mac Path",
 			"description": "In OS X, fixes ST's PATH environment variable to mirror your shell's",
 			"author": "int3h",
 			"homepage": "https://github.com/int3h/SublimeFixPath",
