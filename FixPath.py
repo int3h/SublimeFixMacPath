@@ -22,7 +22,7 @@ def fixPath():
 	environ['PATH'] = getSysPath()
 
 	for pathItem in fixPathSettings.get("additional_path_items", []):
-		environ['PATH'] += ':' + pathItem
+		environ['PATH'] = pathItem + ':' + environ['PATH']
 
 
 def plugin_loaded():
