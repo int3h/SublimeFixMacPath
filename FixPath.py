@@ -1,4 +1,5 @@
 import sublime, sublime_plugin
+import re
 from os import environ
 from subprocess import Popen, PIPE
 
@@ -14,8 +15,14 @@ def getSysPath():
 	# the shell we spawn, which re-adds the system path & returns it, leading to duplicate values.
 	sysPath = Popen(command, stdout=PIPE, shell=True, env=originalEnv).stdout.read()
 
+	sysPathString = sysPath.decode("utf-8")
+	# Remove ANSI control characters (see: http://www.commandlinefu.com/commands/view/3584/remove-color-codes-special-characters-with-sed )
+	sysPathString = re.sub(r'\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]', '', sysPathString)
+	sysPathString = sysPathString.strip().rstrip(':')
+
 	# Decode the byte array into a string, remove trailing whitespace, remove trailing ':'
-	return sysPath.decode("utf-8").strip().rstrip(':')
+	return sysPathString
+
 
 
 def fixPath():
