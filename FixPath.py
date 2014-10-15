@@ -1,3 +1,4 @@
+from __future__ import division, absolute_import, print_function, unicode_literals
 import sublime, sublime_plugin
 import re, platform
 from os import environ
