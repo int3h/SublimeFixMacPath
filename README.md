@@ -16,11 +16,11 @@ The easiest way to get this is to use [Package Control](http://wbond.net/sublime
 
 To manually install Fix Mac Path, run
 
-    git clone git@github.com:int3h/SublimeFixPath.git ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/FixMacPath
+    git clone https://github.com/int3h/SublimeFixMacPath.git ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/FixMacPath
 
 for Sublime Text 2, or
 
-    git clone git@github.com:int3h/SublimeFixPath.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/FixMacPath
+    git clone https://github.com/int3h/SublimeFixMacPath.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/FixMacPath
 
 for Sublime Text 3.
 
