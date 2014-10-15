@@ -8,18 +8,19 @@ originalEnv = {}
 
 
 def getSysPath():
-	command = "/usr/bin/login -fpql $USER $SHELL -l -c \"env | grep '^PATH='\""
+	command = "/usr/bin/login -fqpl $USER $SHELL -l -c 'printf \"%s\" \"$PATH\"'"
 
 	# Execute command with original environ. Otherwise, our changes to the PATH propogate down to
 	# the shell we spawn, which re-adds the system path & returns it, leading to duplicate values.
 	sysPath = Popen(command, stdout=PIPE, shell=True, env=originalEnv).stdout.read()
 
 	# Decode the byte array into a string, remove trailing whitespace, remove trailing ':'
-	return sysPath.decode("utf-8").rstrip().rstrip(':').lstrip('PATH=')
+	return sysPath.decode("utf-8").strip().rstrip(':')
 
 
 def fixPath():
-	environ['PATH'] = getSysPath()
+	currSysPath = getSysPath()
+	environ['PATH'] = currSysPath
 
 	for pathItem in fixPathSettings.get("additional_path_items", []):
 		environ['PATH'] = pathItem + ':' + environ['PATH']
