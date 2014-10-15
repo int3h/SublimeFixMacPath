@@ -8,7 +8,7 @@ originalEnv = {}
 
 
 def getSysPath():
-	command = "/usr/bin/login -fqpl $USER $SHELL -l -c 'printf \"%s\" \"$PATH\"'"
+	command = "TERM=ansi CLICOLOR=\"\" SUBLIME=1 /usr/bin/login -fqpl $USER $SHELL -l -c 'TERM=ansi CLICOLOR=\"\" SUBLIME=1 printf \"%s\" \"$PATH\"'"
 
 	# Execute command with original environ. Otherwise, our changes to the PATH propogate down to
 	# the shell we spawn, which re-adds the system path & returns it, leading to duplicate values.
